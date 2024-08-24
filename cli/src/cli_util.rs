@@ -2733,6 +2733,11 @@ pub struct RevisionArg(Cow<'static, str>);
 impl RevisionArg {
     /// The working-copy symbol, which is the default of the most commands.
     pub const AT: Self = RevisionArg(Cow::Borrowed("@"));
+
+    pub warn_deprecated(&self) {
+        let _ = Self(self);
+    }
+
 }
 
 impl From<String> for RevisionArg {
