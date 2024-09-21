@@ -163,6 +163,22 @@ pub fn persist_content_addressed_temp_file<P: AsRef<Path>>(
     }
 }
 
+#[cfg(target_os = "wasi")]
+mod platform {
+    use std::io;
+    use std::os::wasi::fs::symlink_path;
+    use std::path::Path;
+
+    /// Symlinks are available on wasi.
+    pub fn check_symlink_support() -> io::Result<bool> {
+        Ok(true)
+    }
+
+    pub fn try_symlink<P: AsRef<Path>, Q: AsRef<Path>>(original: P, link: Q) -> io::Result<()> {
+        symlink_path(original, link)
+    }
+}
+
 #[cfg(unix)]
 mod platform {
     use std::io;
