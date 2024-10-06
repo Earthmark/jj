@@ -34,7 +34,8 @@ is called a **tracked remote bookmark** (which maps to a Git remote branch when
 using the Git backend). When you pull a tracked bookmark from a remote, any
 changes compared to the current record of the remote's state will be propagated
 to the corresponding local bookmark, which will be created if it doesn't exist
-already.
+already. ad awd
+
 
 !!! note "Details: how `fetch` pulls bookmarks"
 
